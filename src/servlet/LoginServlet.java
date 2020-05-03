@@ -40,7 +40,7 @@ public class LoginServlet extends ChatServlet {
                     }
                     try {
                         Thread.sleep(1000);
-                        System.out.println("spim");
+                        System.out.println("sleep");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -86,7 +86,7 @@ public class LoginServlet extends ChatServlet {
         }
         response.setCharacterEncoding("UTF-8");
         PrintWriter pw = response.getWriter();
-        pw.println("<html><head><title>Мега-чат!</title><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/></head>");
+        pw.println("<html><head><title>Мега-чат!</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/resource/styles.css\"><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/></head>");
         if (errorMessage!=null) {
             pw.println("<p><font color='red'>" + errorMessage +
                     "</font></p>");
