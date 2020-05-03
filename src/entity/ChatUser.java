@@ -19,7 +19,7 @@ public class ChatUser {
     public long getLastInteractionTime() {
         return lastInteractionTime;
     }
-    public void setLastInteractionTime(long lastInteractionTime) {
+    public synchronized void setLastInteractionTime(long lastInteractionTime) {
         this.lastInteractionTime = lastInteractionTime;
     }
     public String getSessionId() {
