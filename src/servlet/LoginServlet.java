@@ -18,10 +18,14 @@ public class LoginServlet extends ChatServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        String value =
-                getServletConfig().getInitParameter("SESSION_TIMEOUT");
+        String value = getServletConfig().getInitParameter("SESSION_TIMEOUT");
         if (value!=null) {
             sessionTimeout = Integer.parseInt(value);
+        }
+
+        String jkTimeout = getServletContext().getInitParameter("jokeTimeout");
+        if (jkTimeout!=null) {
+            jokePeriod = Integer.parseInt(jkTimeout) * 60 * 1000;
         }
 
         jokeThread = new Thread(new Runnable() {
