@@ -15,7 +15,7 @@ public class MessageListServlet extends ChatServlet {
 
         response.setCharacterEncoding("utf8");
         PrintWriter pw = response.getWriter();
-        pw.println("<html><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/><meta http-equiv='refresh' content='10'></head>");
+        pw.println("<html><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/><link rel=\"stylesheet\" type=\"text/css\" href=\"/resource/styles.css\"><meta http-equiv='refresh' content='1'></head>");
         pw.println("<body>");
 
         for (int i = messages.size()-1; i>=0; i--) {
