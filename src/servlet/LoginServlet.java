@@ -12,8 +12,6 @@ import entity.*;
 public class LoginServlet extends ChatServlet {
     private static final long serialVersionUID = 1L;
     private int sessionTimeout = 10*60;
-    private Thread jokeThread;
-    private int jokePeriod = 60 * 1000;
 
     @Override
     public void init() throws ServletException {
@@ -23,42 +21,8 @@ public class LoginServlet extends ChatServlet {
             sessionTimeout = Integer.parseInt(value);
         }
 
-        String jkTimeout = getServletContext().getInitParameter("jokeTimeout");
-        if (jkTimeout!=null) {
-            jokePeriod = Integer.parseInt(jkTimeout) * 60 * 1000;
-        }
 
-        jokeThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true) {
-                    for (ChatUser user : activeUsers.values()) {
-                        System.out.println(user.getLastInteractionTime() - Calendar.getInstance().getTimeInMillis());
-                        if (Calendar.getInstance().getTimeInMillis() - user.getLastInteractionTime() > jokePeriod) {
-                            synchronized (messages) {
-                                messages.add(new ChatMessage(JokesService.getRandomJoke(), user,
-                                        Calendar.getInstance().getTimeInMillis()));
-                                user.setLastInteractionTime(Calendar.getInstance().getTimeInMillis());
-                            }
-                        }
-                    }
-                    try {
-                        Thread.sleep(1000);
-                        System.out.println("sleep");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        jokeThread.start();
 
-    }
-
-    @Override
-    public void destroy() {
-        super.destroy();
-        jokeThread.interrupt();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse
