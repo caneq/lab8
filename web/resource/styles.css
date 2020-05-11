@@ -1,4 +1,35 @@
 body{
     font-size: 25px;
     font-family: Verdana;
+    background-color: #131313;
+    color: green;
+}
+
+.button {
+    text-decoration: none;
+    color: green;
+    background-color: #131313;
+    border-style: solid;
+    font-size: 18px;
+    border-color: green;
+    border-width: 1px;
+}
+
+a{
+    text-decoration: none;
+    color: green;
+    background-color: #131313;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 18px;
+    border-color: green;
+}
+
+input[type=text]{
+    color: green;
+    background-color: #131313;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 18px;
+    border-color: green;
 }

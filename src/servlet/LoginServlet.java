@@ -41,8 +41,7 @@ public class LoginServlet extends ChatServlet {
             }
             if (previousSessionId!=null) {
                 for (ChatUser aUser: activeUsers.values()) {
-                    if
-                    (aUser.getSessionId().equals(previousSessionId)) {
+                    if (aUser.getSessionId().equals(previousSessionId)) {
                         name = aUser.getName();
                         aUser.setSessionId(request.getSession().getId());
                     }
@@ -59,7 +58,7 @@ public class LoginServlet extends ChatServlet {
             pw.println("<p><font color='red'>" + errorMessage +
                     "</font></p>");
         }
-        pw.println("<form action='/chat/' method='post'>Введите имя: <input type='text' name='name' value=''><input type='submit' value='Войти в чат'>");
+        pw.println("<form action='/chat/' method='post'>Введите имя: <input type='text' name='name' value=''><input type='submit' class='button' value='Войти в чат'>");
         pw.println("</form></body></html>");
         request.getSession().setAttribute("error", null);
     }
